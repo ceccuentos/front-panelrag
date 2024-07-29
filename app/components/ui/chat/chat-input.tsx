@@ -9,6 +9,31 @@ import { useFile } from "./hooks/use-file";
 
 const ALLOWED_EXTENSIONS = ["png", "jpg", "jpeg", "csv", "pdf", "txt", "docx"];
 
+const SendIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    className="w-6 h-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M22 2L11 13"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M22 2L15 22L11 13L2 9L22 2Z"
+    />
+  </svg>
+);
+
+
+
 export default function ChatInput(
   props: Pick<
     ChatHandler,
@@ -81,6 +106,7 @@ export default function ChatInput(
       )}
       {files.length > 0 && (
         <div className="flex gap-4 w-full overflow-auto py-2">
+        {/* // <div className="flex flex-col gap-4 w-full overflow-auto py-2"> */}
           {files.map((file) => (
             <DocumentPreview
               key={file.id}
@@ -91,6 +117,7 @@ export default function ChatInput(
         </div>
       )}
       <div className="flex w-full items-start justify-between gap-4 ">
+      {/* <div className="flex flex-col w-full items-start justify-between gap-4 "> */}
         <Input
           autoFocus
           name="message"
@@ -99,6 +126,7 @@ export default function ChatInput(
           value={props.input}
           onChange={props.handleInputChange}
         />
+        {/* <div className="w-full"> */}
         <FileUploader
           onFileUpload={handleUploadFile}
           onFileError={props.onFileError}
@@ -106,9 +134,11 @@ export default function ChatInput(
             allowedExtensions: ALLOWED_EXTENSIONS,
             disabled: props.isLoading,
           }}
-        />
+          />
+        {/* </div> */}
         <Button type="submit" disabled={props.isLoading || !props.input.trim()}>
-          Enviar Mensaje
+          <SendIcon />
+
         </Button>
       </div>
     </form>
