@@ -25,6 +25,7 @@ export default function ChatMessages(
     }
   };
 
+
   const isLastMessageFromAssistant =
     messageLength > 0 && lastMessage?.role !== "user";
   const showReload =

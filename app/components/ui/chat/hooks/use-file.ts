@@ -1,6 +1,6 @@
 "use client";
 
-import { JSONValue } from "llamaindex";
+import { JSONValue, LLMAgent } from "llamaindex";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -71,6 +71,7 @@ export function useFile() {
         data: { url: imageUrl },
       });
     }
+
     if (files.length > 0) {
       annotations.push({
         type: MessageAnnotationType.DOCUMENT_FILE,

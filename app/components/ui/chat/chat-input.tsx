@@ -127,14 +127,16 @@ export default function ChatInput(
           onChange={props.handleInputChange}
         />
         {/* <div className="w-full"> */}
-        <FileUploader
-          onFileUpload={handleUploadFile}
-          onFileError={props.onFileError}
-          config={{
-            allowedExtensions: ALLOWED_EXTENSIONS,
-            disabled: props.isLoading,
-          }}
-          />
+        <div style={{ display: 'none' }}>
+          <FileUploader
+            onFileUpload={handleUploadFile}
+            onFileError={props.onFileError}
+            config={{
+              allowedExtensions: ALLOWED_EXTENSIONS,
+              disabled: props.isLoading,
+            }}
+            />
+        </div>
         {/* </div> */}
         <Button type="submit" disabled={props.isLoading || !props.input.trim()}>
           <SendIcon />
